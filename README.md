@@ -1,27 +1,30 @@
 <h1>Excel DataFrame and Chart Creator</h1>
+
 <h2>Description</h2>
 <p>
-This project provides a set of functions to create a pandas DataFrame from a dictionary of data, write the DataFrame to an Excel file, and add a chart to the Excel worksheet. The main function, create_excel_with_chart, 
-combines these functionalities to generate an Excel file with a line chart based on the provided data.
+This project provides a set of functions to create a pandas DataFrame from a dictionary of data, write the DataFrame to an Excel file, and add a chart to the Excel worksheet. The main function, <code>create_excel_with_chart</code>, combines these functionalities to generate an Excel file with a line chart based on the provided data.
 </p>
+
 <h2>Installation</h2>
 <p>
 To use these functions, you need to have Python and the following packages installed:
-
-pandas
-xlsxwriter
+</p>
+<ul>
+    <li>pandas</li>
+    <li>xlsxwriter</li>
+</ul>
+<p>
 You can install the necessary packages using pip:
+</p>
+<pre><code>pip install pandas xlsxwriter</code></pre>
 
-bash
-Copy code
-pip install pandas xlsxwriter
-Usage
-Creating a DataFrame
-The create_dataframe function takes a dictionary of data and returns a pandas DataFrame.
+<h2>Usage</h2>
 
-python
-Copy code
-import pandas as pd
+<h3>Creating a DataFrame</h3>
+<p>
+The <code>create_dataframe</code> function takes a dictionary of data and returns a pandas DataFrame.
+</p>
+<pre><code>import pandas as pd
 
 def create_dataframe(data):
     """
@@ -34,12 +37,13 @@ def create_dataframe(data):
     - A pandas DataFrame.
     """
     return pd.DataFrame(data)
-Writing DataFrame to Excel
-The write_dataframe_to_excel function writes a DataFrame to an Excel file.
+</code></pre>
 
-python
-Copy code
-def write_dataframe_to_excel(df, filename, sheet_name='Sheet1'):
+<h3>Writing DataFrame to Excel</h3>
+<p>
+The <code>write_dataframe_to_excel</code> function writes a DataFrame to an Excel file.
+</p>
+<pre><code>def write_dataframe_to_excel(df, filename, sheet_name='Sheet1'):
     """
     Writes a DataFrame to an Excel file.
     
@@ -54,12 +58,13 @@ def write_dataframe_to_excel(df, filename, sheet_name='Sheet1'):
     with pd.ExcelWriter(filename, engine='xlsxwriter') as writer:
         df.to_excel(writer, sheet_name=sheet_name, index=False)
         return writer.book, writer.sheets[sheet_name]
-Adding a Chart to Excel
-The add_chart_to_excel function adds a line chart to an Excel worksheet.
+</code></pre>
 
-python
-Copy code
-def add_chart_to_excel(workbook, worksheet, categories_range, values_range, chart_title, x_label, y_label):
+<h3>Adding a Chart to Excel</h3>
+<p>
+The <code>add_chart_to_excel</code> function adds a line chart to an Excel worksheet.
+</p>
+<pre><code>def add_chart_to_excel(workbook, worksheet, categories_range, values_range, chart_title, x_label, y_label):
     """
     Adds a chart to an Excel worksheet.
     
@@ -97,12 +102,13 @@ def add_chart_to_excel(workbook, worksheet, categories_range, values_range, char
     
     # Insert the chart into the worksheet
     worksheet.insert_chart('D2', chart)
-Creating an Excel File with a Chart
-The create_excel_with_chart function combines the previous functions to create an Excel file with a line chart.
+</code></pre>
 
-python
-Copy code
-def create_excel_with_chart(data, chart_title, x_label, y_label, filename='chart.xlsx'):
+<h3>Creating an Excel File with a Chart</h3>
+<p>
+The <code>create_excel_with_chart</code> function combines the previous functions to create an Excel file with a line chart.
+</p>
+<pre><code>def create_excel_with_chart(data, chart_title, x_label, y_label, filename='chart.xlsx'):
     """
     Creates an Excel file with a chart based on the provided data.
     
@@ -121,12 +127,13 @@ def create_excel_with_chart(data, chart_title, x_label, y_label, filename='chart
     values_range = [worksheet.name, 1, 1, len(df), 1]
     
     add_chart_to_excel(workbook, worksheet, categories_range, values_range, chart_title, x_label, y_label)
-Example
-Here's an example of how to use the create_excel_with_chart function:
+</code></pre>
 
-python
-Copy code
-data = {
+<h3>Example</h3>
+<p>
+Here's an example of how to use the <code>create_excel_with_chart</code> function:
+</p>
+<pre><code>data = {
     'Month': ['January', 'February', 'March', 'April'],
     'Sales': [150, 200, 250, 300]
 }
@@ -136,5 +143,7 @@ x_label = 'Month'
 y_label = 'Sales'
 
 create_excel_with_chart(data, chart_title, x_label, y_label, filename='monthly_sales.xlsx')
-This will create an Excel file named monthly_sales.xlsx with a line chart showing the monthly sales data.
+</code></pre>
+<p>
+This will create an Excel file named <code>monthly_sales.xlsx</code> with a line chart showing the monthly sales data.
 </p>
