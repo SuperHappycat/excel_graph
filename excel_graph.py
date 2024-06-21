@@ -1,5 +1,8 @@
 import pandas as pd
-
+#import pandas as pd
+#import pyperclip
+#import docx
+#import time
 def create_dataframe(data):
     """
     Creates a DataFrame from a dictionary of data.
@@ -87,3 +90,22 @@ def create_excel_with_chart(data, chart_title, x_label, y_label, filename='chart
     
     add_chart_to_excel(workbook, worksheet, categories_range, values_range, chart_title, x_label, y_label)
 
+#Please note that the following code is for another function.
+'''bugfixtime = 0
+def excel_to_word(excel, wordname):
+    time.sleep(bugfixtime)
+    df = pd.read_excel(excel + ".xlsx", sheet_name="Sheet1")
+    time.sleep(bugfixtime)
+    excel_string = df.to_string()
+    time.sleep(bugfixtime)
+    pyperclip.copy(excel_string)
+    time.sleep(bugfixtime)
+    doc = docx.Document()
+    time.sleep(bugfixtime)
+    doc.add_paragraph(pyperclip.paste())
+    time.sleep(bugfixtime)
+    doc.save( wordname + ".docx")
+    time.sleep(bugfixtime)
+def bugfix(timep):
+    bugfixtime = timep'''
+#delete the ''' to use.
